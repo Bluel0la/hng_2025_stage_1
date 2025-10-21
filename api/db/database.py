@@ -8,17 +8,17 @@ load_dotenv(".env.config")
 
 
 def get_db_engine():
-    DB_TYPE = os.getenv("DB_TYPE")
-    DB_NAME = os.getenv("DB_NAME")
-    DB_USER = os.getenv("DB_USER")
-    DB_PASSWORD = os.getenv("DB_PASSWORD")
-    DB_HOST = os.getenv("DB_HOST")
-    DB_PORT = os.getenv("DB_PORT")
-
-    DATABASE_URL = os.getenv("DB_URL")
-
-    # Create the engine based on the URL
-    db_engine = create_engine(DATABASE_URL, pool_size=32, max_overflow=64)
+    if os.getenv("DB_TYPE") == "sqlite":
+        DATABASE_URL = os.getenv("DB_URL", "sqlite:///./test.db")
+        db_engine = create_engine(
+            DATABASE_URL,
+            connect_args={"check_same_thread": False},
+            pool_size=32,
+            max_overflow=64,
+        )
+    else:
+        DATABASE_URL = os.getenv("DB_URL")
+        db_engine = create_engine(DATABASE_URL, pool_size=32, max_overflow=64)
 
     return db_engine
 

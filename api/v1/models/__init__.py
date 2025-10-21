@@ -1,1 +1,1 @@
-from api.v1.models.user_model import User
+from api.v1.models.string_information import StringInformation
