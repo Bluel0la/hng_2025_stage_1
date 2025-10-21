@@ -254,7 +254,7 @@ def filter_by_natural_language(query: str, db: Session = Depends(get_db)):
         }
     }
 
-@strings_router.delete("/strings/{string_value}", status_code=status.HTTP_200_OK)
+@strings_router.delete("/strings/{string_value}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_string(string_value: str, db: Session = Depends(get_db)):
     string_obj = db.query(StringInformation).filter(StringInformation.value == string_value).first()
     if not string_obj:
@@ -264,5 +264,4 @@ def delete_string(string_value: str, db: Session = Depends(get_db)):
         )
     db.delete(string_obj)
     db.commit()
-    return {"message": f"String '{string_value}' and its information have been deleted."}
-
+    return None

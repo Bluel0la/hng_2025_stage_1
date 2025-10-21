@@ -1,6 +1,14 @@
-# FastAPI Boilerplate
+# HNG STAGE ONE TASK
 
-This project is a boilerplate for building APIs with FastAPI, a modern, fast (high-performance), web framework for building APIs with Python 3.7+.
+This project is a FastAPI-based API for advanced string analysis and management. It allows users to analyze, store, retrieve, filter, and delete string data with rich metadata. Key features include:
+
+- Analyzing strings for properties such as length, palindrome status, unique characters, word count, and character frequency.
+- Storing analyzed string information in a PostgreSQL database.
+- Retrieving all strings or filtering them using query parameters (e.g., palindrome, length, word count, specific characters).
+- Natural language filtering: users can query strings using plain English (e.g., "all single word palindromic strings").
+- Deleting strings and their associated metadata from the database.
+
+The API is designed for extensibility and demonstrates best practices in Python, FastAPI, SQLAlchemy, and modern backend development.
 
 ## Setup
 
